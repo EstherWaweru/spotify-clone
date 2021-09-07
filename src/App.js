@@ -3,7 +3,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import { getTokenFromUrl } from './spotify';
 import SpotifyWebApi from 'spotify-web-api-js';
-
+import Player from './Player';
 const spotify = new SpotifyWebApi();
 
 function App() {
@@ -30,11 +30,11 @@ function App() {
     <div className="app">
       {/* spotify logo
       login with spotif button */}
-    {token ? (
-      <h1>I am a player</h1>
-    ) : (
+    {token ? 
+      <Player/>
+     : 
       <Login/>
-    )}
+    }
     
     </div>
   );
