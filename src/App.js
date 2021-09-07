@@ -4,11 +4,13 @@ import { useEffect, useState } from 'react';
 import { getTokenFromUrl } from './spotify';
 import SpotifyWebApi from 'spotify-web-api-js';
 import Player from './Player';
+import { useDataLayerValue } from './DataLayer';
 const spotify = new SpotifyWebApi();
 
 function App() {
   //Run code based on given condition
   const [token,setToken] = useState(null);
+  const [{}, dispatch] = useDataLayerValue();
   useEffect(() =>{
       const hash = getTokenFromUrl();
       window.location.hash = "";
