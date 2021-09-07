@@ -1,7 +1,8 @@
-function Player(){
+import './Player.css'
+function Player({spotify}){
     return(
-        <div>
-       <h2>Welcome to spotify</h2>
+        <div className = "player">
+       <div className = "player_body"></div>
         </div>
     )
 }

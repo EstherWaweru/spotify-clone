@@ -9,31 +9,40 @@ const spotify = new SpotifyWebApi();
 
 function App() {
   //Run code based on given condition
-  const [token,setToken] = useState(null);
-  const [{}, dispatch] = useDataLayerValue();
+  // const [token,setToken] = useState(null);
+  const [{user,token}, dispatch] = useDataLayerValue();
   useEffect(() =>{
       const hash = getTokenFromUrl();
       window.location.hash = "";
       const _token = hash.access_token;
       
       if (_token){
-        setToken(_token)
+        dispatch({
+          type: 'SET_TOKEN',
+          token: _token,
+        });
+        // setToken(_token);
+        
         spotify.setAccessToken(_token);
         spotify.getMe().then(user => {
-          console.log(user);
+      
+          dispatch({
+            type: 'SET_USER',
+            user: user,
+          });
         });
       }
-      console.log("*********",token);
+      
+      
     },[]);
-  
-  
+    
   
   return (
     <div className="app">
       {/* spotify logo
       login with spotif button */}
     {token ? 
-      <Player/>
+      <Player spotify ={spotify}/>
      : 
       <Login/>
     }
