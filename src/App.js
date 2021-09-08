@@ -42,13 +42,13 @@ function App() {
       
     },[]);
     
-  
+  console.log(token);
   return (
     <div className="app">
       {/* spotify logo
       login with spotif button */}
     {token ? 
-      <Player spotify ={spotify}/>
+      <Player spotify={spotify}/>
      : 
       <Login/>
     }

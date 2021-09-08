@@ -12,10 +12,14 @@
   border-radius: 30px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 .header__left > input {
   border: none;
   width: 100%;
+}
+.header__left > input:hover {
+  border: none;
 }
 .header__right {
   display: flex;
