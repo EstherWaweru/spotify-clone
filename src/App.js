@@ -39,16 +39,24 @@ function App() {
           playlists:playlists,
         });
       });
+
+      spotify.getPlaylist("37i9dQZEVXcV15YvAli6w0").then((response) =>
+        dispatch({
+          type: "SET_DISCOVER_WEEKLY",
+          discover_weekly: response,
+        })
+      );
+      
       
     },[]);
     
-  
+  console.log(token);
   return (
     <div className="app">
       {/* spotify logo
       login with spotif button */}
     {token ? 
-      <Player spotify ={spotify}/>
+      <Player spotify={spotify}/>
      : 
       <Login/>
     }
